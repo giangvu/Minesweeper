@@ -1,0 +1,14 @@
+
+{% extends "_layout.html" %}
+
+{% block content %}
+
+	 <script src="{{ url_for('static', filename='js/game.js') }}"></script>
+
+    <div>
+        <input type="hidden" id="id" value="{{ id }}">
+        <div id="board">
+
+        </div>
+    </div>
+{% endblock %}

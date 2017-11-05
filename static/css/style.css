@@ -1,0 +1,72 @@
+
+table {
+    margin: 0 auto;
+    background-color: #ebebeb;
+    border-spacing: 0;
+    border-collapse: separate;
+    border: 2px solid grey;
+}
+
+td {
+    border: 1px solid grey;
+    width: 32px;
+    height: 32px;
+    min-width: 32px;
+    min-height: 32px;
+}
+
+.mine {
+    background-image: url("/static/images/bomb.png");
+    background-color: #cecdca;
+}
+
+.exploded {
+    background-image: url("/static/images/bomb.png");
+    background-color: #ff0000;
+}
+
+.flagged {
+    background-image: url("/static/images/flag.png");
+}
+.wrong-flagged {
+    background-image: url("/static/images/wrongflag.png");
+    background-color: #cecdca;
+}
+
+.mine, .exploded, .flagged, .wrong-flagged {
+    background-size: 24px 24px;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.zero {
+    background-image: url("/static/images/open0.png");
+}
+.one {
+    background-image: url("/static/images/open1.png");
+}
+.two {
+    background-image: url("/static/images/open2.png");
+}
+.three {
+    background-image: url("/static/images/open3.png");
+}
+.four {
+    background-image: url("/static/images/open4.png");
+}
+.five {
+    background-image: url("/static/images/open5.png");
+}
+.six {
+    background-image: url("/static/images/open6.png");
+}
+.seven {
+    background-image: url("/static/images/open7.png");
+}
+.eight {
+    background-image: url("/static/images/open8.png");
+}
+
+#custom-controls {
+    display: none;
+}

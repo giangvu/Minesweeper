@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<title>Minesweeper</title>
+	<meta charset="utf-8" />
+
+{#	{% load staticfiles %}#}
+
+{#	<link rel="shortcut icon" href="{% static 'images/bomb.png'%}" type="image/x-icon">#}
+
+	<script type="text/javascript" src="{{ url_for('static', filename='js/jquery-3.2.1.min.js') }}"></script>
+{#	<script src="https://use.fontawesome.com/9e63e73dfb.js"></script>#}
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+{#	<link rel="stylesheet" href="{% static 'css/game.css'%}">#}
+
+</head>
+
+<body>
+	<div>
+	   {% block content %}
+	   {% endblock %}
+	</div>
+</body>
+
+</html>

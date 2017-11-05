@@ -2,16 +2,16 @@
 {% extends "_layout.html" %}
 
 {% macro render_field_with_errors(field) %}
-  <p>
-      <strong>{{ field.label }}</strong> {{ field(**kwargs)|safe }}
-    {% if field.errors %}
-      <ul>
-      {% for error in field.errors %}
-        <li>{{ error }}</li>
-      {% endfor %}
-      </ul>
-    {% endif %}
-  </p>
+    <div>
+        {{ field.label }} {{ field(**kwargs)|safe }}
+        {% if field.errors %}
+          <ul>
+          {% for error in field.errors %}
+            <li>{{ error }}</li>
+          {% endfor %}
+          </ul>
+        {% endif %}
+    </div>
 {% endmacro %}
 
 {% macro render_field(field) %}
@@ -21,32 +21,33 @@
 {% block content %}
      <script src="{{ url_for('static', filename='js/index.js') }}"></script>
 
+
     <div id="form">
         <div id="title">
             <i class="fa fa-bomb"></i>
             Minesweeper
         </div>
+
         <form action="{{ url_for('view.index') }}" method="POST">
             {{ form.csrf_token }}
             <div id="option">
              {% for mode in form.modes %}
-                <tr>
-                    <td>{{ mode }}</td>
-                    <td>{{ mode.label }}</td>
-                </tr>
+                <div>{{ mode(class="game-option") }}
+                    {{ mode.label }}
+                </div>
              {% endfor %}
 
-            <div id="custom-controls">
+            <div id="custom-option">
                 {{ render_field_with_errors(form.width) }}
                 {{ render_field_with_errors(form.height) }}
                 {{ render_field_with_errors(form.mines) }}
             </div>
         </div>
         <div id="start-container">
-            {{ render_field(form.start) }}
+            {{ render_field(form.start, id="start") }}
         </div>
         </form>
-
     </div>
+
 
 {% endblock %}

@@ -1,5 +1,5 @@
 from flask import Flask
-from extensions import mongo
+from extensions import mongo, socket
 
 app = Flask(__name__)
 
@@ -20,10 +20,11 @@ app.config['GAME_OPTIONS'] = [
 
 with app.app_context():
     mongo.init_app(app)
+    socket.init_app(app)
 
     from views import view
     app.register_blueprint(view)
 
 
 if __name__ == '__main__':
-    app.run()
+    socket.run(app)

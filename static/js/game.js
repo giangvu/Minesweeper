@@ -10,6 +10,7 @@ var STATUS = [
 var ACTION_TYPES = ["click", "double-click", "right-click"];
 var game;
 var id;
+var socket;
 
 function drawGameBoard(data) {
     game = data;
@@ -41,18 +42,6 @@ function drawGameBoard(data) {
 
 }
 
-function post(data) {
-    $.ajax({
-          url: "/game_action",
-          type: "POST",
-          data: JSON.stringify(data),
-          contentType: 'application/json;charset=UTF-8',
-          success: function(data){
-              drawGameBoard(data);
-          }
-    });
-}
-
 function onAction(element, type) {
     var x = $(element).attr("x");
     var y = $(element).attr("y");
@@ -60,19 +49,23 @@ function onAction(element, type) {
     if((type == 0 && value == 12) ||
         type == 1 && (value > 0 && value < 9) ||
         type == 2 && (value == 11 || value == 12)) {
-        post({id: id, action: ACTION_TYPES[type], x: x, y: y});
+        socket.emit('action', {id: id, action: ACTION_TYPES[type], x: x, y: y})
     }
 }
 
 $(document).ready(function() {
 
     id = $("#id").val();
+    socket = io.connect('http://' + document.domain + ':' + location.port);
+    socket.on('connect', function() {
+        socket.emit('join', id);
+    });
 
-    $.ajax({
-      url: "/game_data/" + id,
-      success: function(data){
-          game = data;
-          drawGameBoard(data);
-      }
+    socket.on('game-data', function(data) {
+        drawGameBoard(data);
+    });
+
+    $(window).bind("beforeunload", function() {
+        socket.disconnect();
     });
 });

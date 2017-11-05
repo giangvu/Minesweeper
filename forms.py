@@ -11,9 +11,9 @@ class GameForm(form.Form):
     modes = fields.RadioField(
         label='Modes',
         choices=[
-            ("0", str(OPTIONS[0]['width']) + ' x ' + str(OPTIONS[0]['height'])),
-            ("1", str(OPTIONS[1]['width']) + ' x ' + str(OPTIONS[1]['height'])),
-            ("2", str(OPTIONS[2]['width']) + ' x ' + str(OPTIONS[2]['height'])),
+            ("0", '{} x {} ({} mines)'.format(OPTIONS[0]['width'], OPTIONS[0]['height'], OPTIONS[0]['mines'])),
+            ("1", '{} x {} ({} mines)'.format(OPTIONS[1]['width'], OPTIONS[1]['height'], OPTIONS[1]['mines'])),
+            ("2", '{} x {} ({} mines)'.format(OPTIONS[2]['width'], OPTIONS[2]['height'], OPTIONS[2]['mines'])),
             ("3", 'Custom')
         ],
         default='0',

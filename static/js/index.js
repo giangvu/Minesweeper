@@ -4,6 +4,6 @@
 
 $(document).ready(function() {
     $("input[name='modes']").change(function(e){
-        $("#custom-controls").toggle($(this).val() == 3);
+        $("#custom-option").toggle($(this).val() == 3);
     });
 });

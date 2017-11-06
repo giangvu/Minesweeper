@@ -15,7 +15,7 @@ class SquareStatus(Enum):
     WRONG_FLAGGED = 4
 
 
-class Square:
+class Square(object):
     """
     Represent a square which is inside a game board
     """
@@ -45,7 +45,7 @@ class Square:
         return {'v': self.__value, 's': self.__status.value}
 
 
-class Game:
+class Game(object):
     """
     Represent the game and control game's logic
     """

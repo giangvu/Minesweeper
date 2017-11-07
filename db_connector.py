@@ -3,6 +3,9 @@ from bson.objectid import ObjectId
 
 
 class DatabaseConnector:
+    """
+    Responsible for manipulating database
+    """
 
     @classmethod
     def insert_game(cls, data):

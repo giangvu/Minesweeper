@@ -1,4 +1,3 @@
-
 {% extends "_layout.html" %}
 
 {% macro render_field_with_errors(field) %}
@@ -14,10 +13,6 @@
     </div>
 {% endmacro %}
 
-{% macro render_field(field) %}
-  <p>{{ field(**kwargs)|safe }}</p>
-{% endmacro %}
-
 {% block content %}
      <script src="{{ url_for('static', filename='js/index.js') }}"></script>
 
@@ -27,7 +22,9 @@
             <i class="fa fa-bomb"></i>
             Minesweeper
         </div>
-
+        <p id="info">
+            Access the same game's url to play together
+        </p>
         <form action="{{ url_for('view.index') }}" method="POST">
             {{ form.csrf_token }}
             <div id="option">
@@ -42,12 +39,13 @@
                 {{ render_field_with_errors(form.height) }}
                 {{ render_field_with_errors(form.mines) }}
             </div>
-        </div>
-        <div id="start-container">
-            {{ render_field(form.start, id="start") }}
-        </div>
+            </div>
+            <div id="start-container">
+                <button id="start" title="New Game" type="submit">
+                    <i class="fa fa-play"></i> New Game
+                </button>
+            </div>
         </form>
     </div>
-
 
 {% endblock %}

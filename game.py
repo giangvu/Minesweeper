@@ -53,6 +53,15 @@ class Game(object):
     def __init__(self, data):
         """
         Populate game's state
+        
+        :param data: {
+            'board': dict,
+            'width': int,
+            'height': int,
+            'mines': int,
+            'flags': int,
+            'status': GameStatus
+        }
         """
 
         self.__status = GameStatus(data['status'])
@@ -75,7 +84,7 @@ class Game(object):
         """
 
         item = self.__board[x][y]
-        if item.status != SquareStatus.CLOSED:
+        if self.__status != GameStatus.PLAYING or item.status != SquareStatus.CLOSED:
             return
 
         item.status = SquareStatus.OPENED
@@ -97,8 +106,7 @@ class Game(object):
         """
 
         item = self.__board[x][y]
-
-        if item.status not in {SquareStatus.CLOSED, SquareStatus.FLAGGED}:
+        if self.__status != GameStatus.PLAYING or item.status not in {SquareStatus.CLOSED, SquareStatus.FLAGGED}:
             return
 
         item.status = SquareStatus.FLAGGED if item.status == SquareStatus.CLOSED else SquareStatus.CLOSED
@@ -114,19 +122,20 @@ class Game(object):
         """
 
         item = self.__board[x][y]
+        if self.__status != GameStatus.PLAYING or item.status != SquareStatus.OPENED or item.value < 1:
+            return
 
-        if item.status == SquareStatus.OPENED and item.value > 0:
-            positions = self.__get_adjacent_positions(x, y)
+        positions = self.__get_adjacent_positions(x, y)
 
-            # count flagged around
-            flags = 0
+        # count flagged around
+        flags = 0
+        for (i, j) in positions:
+            flags += 1 if self.__board[i][j].status == SquareStatus.FLAGGED else 0
+
+        # if flagged around = number of mines around, open all unopened/non-flagged items around
+        if flags == item.value:
             for (i, j) in positions:
-                flags += 1 if self.__board[i][j].status == SquareStatus.FLAGGED else 0
-
-            # if flagged around = number of mines around, open all unopened/non-flagged items around
-            if flags == item.value:
-                for (i, j) in positions:
-                    self.open(i, j)
+                self.open(i, j)
 
     def to_json(self, is_view=False):
         """
@@ -207,7 +216,7 @@ class Game(object):
 
         # if all items are opened or flagged and flagged correct = mines, user won the game
         if opened_or_flagged == self.__height * self.__width and correct_flagged == self.__mines:
-            self.__status == GameStatus.WON
+            self.__status = GameStatus.WON
 
     def __to_view_data(self, x, y):
         """

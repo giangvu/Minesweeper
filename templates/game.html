@@ -3,13 +3,31 @@
 
 {% block content %}
 
-	 <script type="text/javascript" src="{{ url_for('static', filename='js/game.js') }}"></script>
+    <script type="text/javascript" src="{{ url_for('static', filename='js/game.js') }}"></script>
     <script type="text/javascript" src="{{ url_for('static', filename='js/socket.io-1.3.6.min.js') }}"></script>
-{#    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/1.3.6/socket.io.min.js"></script>#}
-    <div>
-        <input type="hidden" id="id" value="{{ id }}">
-        <div id="board">
 
+    <div class="container">
+         <div id="game-title">
+             <i class="fa fa-bomb"></i> Minesweeper
+         </div>
+
+        <div id="top">
+            <div class="flags">
+                <label id="flags"></label><i class="fa fa-flag"></i>
+            </div>
+            <div id="status"></div>
+        </div>
+
+        <input type="hidden" id="id" value="{{ id }}">
+        <div id="board"></div>
+
+        <div id="bottom">
+            <button id="new" title="New Game" onclick="window.location.href = '/'">
+                <i class="fa fa-play"></i> New Game
+            </button>
+            <button id="copy" title="Copy Url" onclick="copyUrl()">
+                <i class="fa fa-link"></i> Copy Url
+            </button>
         </div>
     </div>
 {% endblock %}

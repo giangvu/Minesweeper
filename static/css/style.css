@@ -75,6 +75,32 @@ input[type='radio'] {
     background-image: url("/static/images/open8.png");
 }
 
+.playing {
+    background-image: url("/static/images/happy.png");
+}
+.won {
+    background-image: url("/static/images/smile.png");
+}
+
+.lost {
+    background-image: url("/static/images/pain.png");
+}
+
+.flags {
+    font-size: 30px;
+    float: left;
+    margin-top: 10px;
+    position: absolute;
+}
+
+.container {
+    position:relative;
+    margin: 0 auto;
+    display: table;
+    margin-top:25px;
+}
+
+
 #custom-option {
     display: none;
     font-size: 18px;
@@ -90,12 +116,6 @@ input[type='radio'] {
     float: right;
 }
 
-.container {
-    position:relative;
-    margin: 0 auto;
-    display: table;
-    margin-top:60px;
-}
 
 #game-field {
    margin: 0 auto;
@@ -151,10 +171,10 @@ input[type='radio'] {
     width:45px;
 }
 
-#new, #undo {
+#new, #copy, #back {
     border: none;
     color: white;
-    padding: 10px 30px;
+    padding: 6px 20px;
     text-align: center;
     text-decoration: none;
     display: inline-block;
@@ -165,20 +185,21 @@ input[type='radio'] {
 
 #new {
     background-color: #4CAF50;
-    float: right;
 }
 
 #new:hover {
     background-color:#1c9230 ;
 }
 
-#undo {
-    background-color: #2f7494;
-    float: left;
+#copy {
+    background-color: #485F6E;
 }
-#undo:hover {
-    background-color: #264894;
+
+#copy:hover {
+    background-color:#3c4e59 ;
 }
+
+
 
 #status {
     background-size: 40px 40px;
@@ -192,15 +213,9 @@ input[type='radio'] {
     height:60px;
 }
 
-#bottom {
-    width: 175px;
-    margin: 0 auto;
-    height: 70px;
-    margin-top: 20px;
-}
-
 #top {
-    height:60px;
+    height:50px;
+    text-align: center;
 }
 
 #game-title {
@@ -212,4 +227,34 @@ input[type='radio'] {
 
 #start-container {
     text-align: center;
+}
+
+#status {
+    display: inline-block;
+}
+#bottom {
+   text-align: center;
+    height: 50px;
+    margin-top: 15px;
+}
+
+#new {
+    margin-right: 15px;
+}
+
+#info {
+    font-size: 16px;
+    margin: 0 auto;
+    width: 385px;
+    margin-bottom: 25px;
+}
+
+#not-found {
+    width: 300px;
+    margin: 0 auto;
+    margin-top: 250px;
+    text-align: center;
+}
+#back {
+    background-color: #555555;
 }

@@ -12,13 +12,22 @@ var game;
 var id;
 var socket;
 
+function copyUrl() {
+    var aux = document.createElement("input");
+    aux.setAttribute("value", window.location.href);
+    document.body.appendChild(aux);
+    aux.select();
+    document.execCommand("copy");
+    document.body.removeChild(aux);
+}
+
 function drawGameBoard(data) {
     game = data;
 
     $('table').remove();
     $('#board').append('<table>');
 
-    /* loop through all items, check their states and apply css */
+    /* loop through all squares, check their states and apply css */
     for (var i = 0; i < game.board.length; i++) {
         var rowId = "row-" + i;
         $('table').append('<tr id="' + rowId + '">');
@@ -33,11 +42,17 @@ function drawGameBoard(data) {
     /* disable right-click on table*/
     $("table").on("contextmenu", function () { return false; });
 
+    $("#flags").text(game.flags);
+    $("#status").removeClass();
     if (game.status == 0){
+        $("#status").addClass("playing");
         $("td").hover(function(e) {
             $(this).css("border", e.type === "mouseenter" ?
                 "1px solid #ffffff" : "1px solid grey");
         });
+    }
+    else {
+        $("#status").addClass( game.status == 1 ? "won" : "lost");
     }
 
 }
@@ -66,6 +81,6 @@ $(document).ready(function() {
     });
 
     $(window).bind("beforeunload", function() {
-        socket.disconnect();
+        socket.emit('leave', id);
     });
 });

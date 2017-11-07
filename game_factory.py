@@ -57,7 +57,7 @@ class GameFactory:
             'height': height,
             'mines': mines,
             'status': GameStatus.PLAYING,
-            'flags': 0
+            'flags': mines
         }
 
         return Game(data)

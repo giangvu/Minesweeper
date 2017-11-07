@@ -40,5 +40,3 @@ class GameForm(form.Form):
         validators=[validators.NumberRange(min=MINIMUM['mines'], max=MAXIMUM['mines'])],
         widget=NumberInput(min=MINIMUM['mines'], max=MAXIMUM['mines'])
     )
-
-    start = fields.SubmitField(label='New Game')

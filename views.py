@@ -1,4 +1,4 @@
-from flask import Blueprint, request, render_template, redirect, url_for, current_app as app, jsonify, abort
+from flask import Blueprint, request, render_template, redirect, url_for, current_app as app, abort
 from db_connector import DatabaseConnector as database
 from game_factory import GameFactory
 from game import Game
@@ -50,16 +50,8 @@ def action(message):
 
 
 @socket.on('leave')
-def left(id):
+def leave(id):
     leave_room(id)
-    # emit('status', {'msg': session.get('name') + ' has left the room.'}, room=game_id)
-
-
-@socket.on('disconnect')
-def disconnect():
-    print(request.sid)
-    print(request.url)
-    print('Client disconnected')
 
 
 @view.route('/', methods=['GET', 'POST'])
@@ -85,7 +77,7 @@ def index():
 
         return redirect(url_for('view.game', id=id))
 
-    return render_template('/index.html', form=form)
+    return render_template('index.html', form=form)
 
 
 @view.route('/game/<id>', methods=['GET'])

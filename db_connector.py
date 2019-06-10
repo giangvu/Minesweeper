@@ -14,10 +14,16 @@ class DatabaseConnector:
 
     @classmethod
     def update_game(cls, id, data):
+        if not ObjectId.is_valid(id):
+            return None
+
         result = mongo.db.games.update_one({'_id': ObjectId(id)}, {"$set": {"data": data}})
         return result.modified_count
 
     @classmethod
     def get_game(cls, id):
+        if not ObjectId.is_valid(id):
+            return None
+
         result = mongo.db.games.find_one({'_id': ObjectId(id)})
         return result

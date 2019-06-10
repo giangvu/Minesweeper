@@ -8,21 +8,24 @@
 
     <div class="container">
          <div id="game-title">
-             <i class="fa fa-bomb"></i> Minesweeper
+             <i class="fa fa-bomb"></i> Minesweeper <label>by Giang Vu</label>
          </div>
 
         <div id="top">
             <div class="flags">
-                <label id="flags"></label><i class="fa fa-flag"></i>
+                <label id="flags"></label>
+                <div class="flag"></div>
             </div>
+
             <div id="status"></div>
+
         </div>
 
         <input type="hidden" id="id" value="{{ id }}">
         <div id="board"></div>
 
         <div id="bottom">
-            <button id="new" title="New Game" onclick="window.location.href = '/'">
+            <button id="new" title="New Game" onclick="newGame()">
                 <i class="fa fa-play"></i> New Game
             </button>
             <button id="copy" title="Copy Url" onclick="copyUrl()">

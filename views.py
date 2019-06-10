@@ -16,6 +16,7 @@ def join(id):
     join_room(id)
 
     game_json = database.get_game(id)
+
     if not game_json:
         abort(404)
 
@@ -87,4 +88,5 @@ def game(id):
         abort(404)
 
     return render_template('game.html', id=id)
+
 

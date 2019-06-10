@@ -91,6 +91,15 @@ input[type='radio'] {
     float: left;
     margin-top: 10px;
     position: absolute;
+    display: inline-flex;
+}
+
+.flag {
+    margin-top: 5px;
+    margin-left: 5px;
+    width: 24px;
+    height: 24px;
+    background-image: url("/static/images/flag.png");
 }
 
 .container {
@@ -125,8 +134,8 @@ input[type='radio'] {
 #form {
     position:fixed;
     top: 35%;
-    left: 50%;
-    width:30em;
+    left: 48%;
+    width:35em;
     height:18em;
     margin-top: -9em;
     margin-left: -15em;
@@ -155,6 +164,10 @@ input[type='radio'] {
     font-size: 40px;
     margin-bottom: 20px;
     text-align: center;
+}
+
+#title label {
+    font-size: 20px;
 }
 
 #option {
@@ -216,6 +229,7 @@ input[type='radio'] {
 #top {
     height:50px;
     text-align: center;
+    display: flex;
 }
 
 #game-title {
@@ -223,6 +237,10 @@ input[type='radio'] {
     font-size: 30px;
     font-family: monospace;
     margin-bottom: 20px;
+}
+
+#game-title label {
+    font-size: 18px;
 }
 
 #start-container {

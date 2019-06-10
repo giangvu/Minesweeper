@@ -4,7 +4,7 @@ from extensions import mongo, socket
 app = Flask(__name__)
 
 # configuration
-app.config['SECRET_KEY'] = '12345'
+app.config['SECRET_KEY'] = 'apw#%17fe39^&@.'
 app.config['MONGO_HOST'] = 'localhost'
 app.config['MONGO_PORT'] = 27017
 app.config['MONGO_DBNAME'] = 'minesweeper'

@@ -2,18 +2,19 @@
 
 ## Screenshots
 
-<img src="screenshots/home.png" alt="" width="200"/>
+<div>
+<img src="screenshots/home.png" alt="" width="450"/>
 
-<img src="screenshots/game.png" alt="" width="200"/>
+<img src="screenshots/game.png" alt="" width="450"/>
 
-<img src="screenshots/game2.png" alt="" width="200"/>
+<img src="screenshots/game2.png" alt="" width="450"/>
+</div>
 
-## Prerequisites
-Make sure your computer has the following software installed:
-1. Python
-2. MongoDB
+## How to set up and run this web application on your computer
 
-## How to run this project on your computer
+### Prerequisites 
+* Python and Virtualenv
+* MongoDB
 
 #### 1. Clone the source code
 ```
@@ -38,11 +39,11 @@ $source venv/bin/activate
 $pip install -r requirements.txt
 ```
 
-#### 4. Run the web application
+#### 4. Run the application
 ```
 $ python app.py
 ```
 
 ### Notes:
-* Make sure your MongoDB listens on the same port as the value of `app.config['MONGO_PORT']` in the `app.py`. By default this value is `27017`
+* Make sure that MongoDB listens on the same port as the value of `app.config['MONGO_PORT']` in the `app.py`. By default, this value is `27017`.
 

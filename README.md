@@ -2,11 +2,11 @@
 
 ## Screenshots
 
-![alt text](screenshots/home.png)
+<img src="screenshots/home.png" alt="" width="200"/>
 
-![alt text](screenshots/game.png)
+<img src="screenshots/game.png" alt="" width="200"/>
 
-![alt text](screenshots/game2.png)
+<img src="screenshots/game2.png" alt="" width="200"/>
 
 ## Prerequisites
 Make sure your computer has the following software installed:

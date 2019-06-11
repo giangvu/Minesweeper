@@ -2,13 +2,11 @@
 
 ## Screenshots
 
-<div>
 <img src="screenshots/home.png" alt="" width="450"/>
 
 <img src="screenshots/game.png" alt="" width="450"/>
 
 <img src="screenshots/game2.png" alt="" width="450"/>
-</div>
 
 ## How to set up and run this web application on your computer
 
@@ -45,5 +43,5 @@ $ python app.py
 ```
 
 ### Notes:
-* Make sure that MongoDB listens on the same port as the value of `app.config['MONGO_PORT']` in the `app.py`. By default, this value is `27017`
+* Make sure that MongoDB listens on the same port as the value of `app.config['MONGO_PORT']` in `app.py`. By default, this value is `27017`
 
